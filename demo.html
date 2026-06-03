@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Entrance Animations Sandbox</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;600&family=JetBrains+Mono&display=swap">
+    <style>
+        :root {
+            --bg-dark: #070707;
+            --text-cream: #f8eee4;
+            --orange: #ff4f00;
+            --border-light: rgba(248, 238, 228, 0.15);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-cream);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Demo Interface Control Bar */
+        .control-bar {
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .control-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--text-cream);
+        }
+
+        .control-title span {
+            color: var(--orange);
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-control {
+            background: transparent;
+            border: 1px solid var(--text-cream);
+            color: var(--text-cream);
+            padding: 0.7rem 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-control:hover, .btn-control.active {
+            border-color: var(--orange);
+            background-color: var(--orange);
+            color: #fff;
+        }
+
+        /* Main Workspace holding the Hero Mockup */
+        .viewport {
+            flex-grow: 1;
+            position: relative;
+            background: #0f0f0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* The Hero Mockup (What gets revealed) */
+        .hero-mockup {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 10;
+        }
+
+        .mockup-badge {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--orange);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+        }
+
+        .mockup-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 0.9;
+            color: #fff;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .mockup-desc {
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 3rem;
+        }
+
+        .mockup-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-mockup {
+            border: 1px solid var(--orange);
+            color: var(--orange);
+            background: rgba(255, 79, 0, 0.08);
+            padding: 1rem 2.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        /* ========================================
+           ANIMATION 1: CIRCULAR CLIP-MASK
+           ======================================== */
+        .mask-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-dark);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .mask-curtain {
+            width: 100%; height: 100%;
+            background: var(--bg-dark);
+            position: absolute;
+            top: 0; left: 0;
+            clip-path: circle(0% at 50% 50%);
+        }
+
+        .mask-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10vw;
+            font-weight: 900;
+            color: var(--text-cream);
+            z-index: 102;
+            position: absolute;
+        }
+
+        /* ========================================
+           ANIMATION 3: GRID BLOCK STAGGER
+           ======================================== */
+        .grid-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 100;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            pointer-events: none;
+        }
+
+        .grid-block {
+            background-color: var(--bg-dark);
+            width: 100%; height: 100%;
+            border: 0.5px solid rgba(255, 255, 255, 0.01);
+        }
+
+        .grid-counter {
+            position: absolute;
+            z-index: 102;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 10vw;
+            font-weight: 900;
+            color: var(--text-cream);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%; height: 100%;
+            background: transparent;
+        }
+
+        /* ========================================
+           ANIMATION 4: WORD COLLISION
+           ======================================== */
+        .collision-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-dark);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .collision-split {
+            position: absolute;
+            width: 100%; height: 50%;
+            background: var(--bg-dark);
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .collision-split.top {
+            top: 0;
+            border-bottom: 0.5px solid rgba(255,255,255,0.05);
+        }
+
+        .collision-split.bottom {
+            bottom: 0;
+        }
+
+        .collision-word {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--text-cream);
+            position: absolute;
+            white-space: nowrap;
+        }
+
+        .word-left {
+            left: 50%;
+            transform: translateX(-150%);
+        }
+
+        .word-right {
+            right: 50%;
+            transform: translateX(150%);
+        }
+
+        .collision-counter {
+            position: absolute;
+            z-index: 105;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3vw;
+            font-weight: 700;
+            color: var(--orange);
+            bottom: 10%;
+        }
+
+        /* ========================================
+           ANIMATION 5: COMBINED FLOW & COLLISION MARVEL INTRO
+           ======================================== */
+        .marvel-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #000;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .flow-columns-wrapper {
+            position: absolute;
+            top: -20%; left: 0;
+            width: 100%; height: 140%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            padding: 2rem;
+            opacity: 1;
+            z-index: 95;
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s;
+        }
+
+        .flow-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            height: fit-content;
+        }
+
+        .flow-column img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: grayscale(40%) brightness(0.65);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Combined Collision overlay styling */
+        .collision-wrapper {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 98;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .collision-wrapper .collision-word {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3.5rem, 11vw, 9.5rem);
+            color: var(--text-cream);
+            position: absolute;
+            white-space: nowrap;
+            /* Strong brutalist text shadow overlaying the grid */
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.95);
+            opacity: 0;
+        }
+
+        .marvel-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            z-index: 105;
+            position: relative;
+        }
+
+        .marvel-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 12vw, 9rem);
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            line-height: 0.8;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transform: scale(0.65);
+            filter: drop-shadow(0 0 15px rgba(255, 79, 0, 0.15));
+            border: 4px solid transparent;
+            padding: 1.5rem 3rem;
+            opacity: 0;
+            transition: background 0.05s, border-color 0.15s, background-color 0.15s;
+        }
+
+        .marvel-flash {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #fff;
+            z-index: 110;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Utilities */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTROL BAR -->
+    <div class="control-bar">
+        <div class="control-title">ATHARVA AGARWAL / <span>PRELOADER SANDBOX</span></div>
+        <div class="control-buttons">
+            <button class="btn-control" onclick="triggerAnimation(5)">🎬 Combined Intro (4 + 5)</button>
+            <button class="btn-control" onclick="triggerAnimation(1)">1. Zoom Clip-Mask</button>
+            <button class="btn-control" onclick="triggerAnimation(3)">3. Grid Block Stagger</button>
+            <button class="btn-control" onclick="triggerAnimation(4)">4. Word Collision</button>
+        </div>
+    </div>
+
+    <!-- VIEWPORT WORKSPACE -->
+    <div class="viewport">
+        
+        <!-- THE HERO (WHAT GETS REVEALED) -->
+        <div class="hero-mockup">
+            <span class="mockup-badge">Designer & Developer</span>
+            <h1 class="mockup-title">ATHARVA AGARWAL</h1>
+            <p class="mockup-desc">
+                Designing premium, brutalist web systems and writing storytelling screenplays. Pursuing BCA at BIT Mesra.
+            </p>
+            <div class="mockup-actions">
+                <a href="#" class="btn-mockup">Selected Works</a>
+                <a href="#" class="btn-mockup" style="border-color: #fff; color: #fff; background: none;">Contact Me</a>
+            </div>
+        </div>
+
+        <!-- ANIMATION 1: CIRCULAR CLIP-MASK OVERLAY -->
+        <div class="mask-overlay hidden" id="overlay-1">
+            <div class="mask-number" id="num-1">00</div>
+            <div class="mask-curtain" id="curtain-1"></div>
+        </div>
+
+        <!-- ANIMATION 3: GRID BLOCK STAGGER OVERLAY -->
+        <div class="grid-overlay hidden" id="overlay-3">
+            <!-- Blocks dynamically generated by JS -->
+        </div>
+        <div class="grid-counter hidden" id="counter-3">
+            <span id="num-3">00</span>
+        </div>
+
+        <!-- ANIMATION 4: WORD COLLISION OVERLAY -->
+        <div class="collision-overlay hidden" id="overlay-4">
+            <div class="collision-counter" id="num-4">00%</div>
+            
+            <div class="collision-split top" id="split-top">
+                <div class="collision-word word-left" id="w-left-t">DESIGN</div>
+                <div class="collision-word word-right" id="w-right-t">DEVELOP</div>
+            </div>
+
+            <div class="collision-split bottom" id="split-bottom">
+                <div class="collision-word word-left" id="w-left-b">DESIGN</div>
+                <div class="collision-word word-right" id="w-right-b">DEVELOP</div>
+            </div>
+        </div>
+
+        <!-- ANIMATION 5: COMBINED INTRO OVERLAY -->
+        <div class="marvel-overlay hidden" id="overlay-5">
+            <!-- Flowing Tapestry of Columns -->
+            <div class="flow-columns-wrapper" id="flow-wrapper">
+                <div class="flow-column col-1">
+                    <img src="images/flow1.jpg" alt="Nature">
+                    <img src="images/flow2.jpg" alt="Mountain">
+                    <img src="images/flow3.jpg" alt="Hill">
+                    <img src="images/flow4.jpg" alt="Car">
+                    <img src="images/flow1.jpg" alt="Nature">
+                </div>
+                <div class="flow-column col-2">
+                    <img src="images/flow5.jpg" alt="Tech">
+                    <img src="images/flow6.jpg" alt="Mountain">
+                    <img src="images/flow7.jpg" alt="Nature">
+                    <img src="images/flow8.jpg" alt="Tech">
+                    <img src="images/flow5.jpg" alt="Tech">
+                </div>
+                <div class="flow-column col-3">
+                    <img src="images/flow3.jpg" alt="Hill">
+                    <img src="images/flow4.jpg" alt="Car">
+                    <img src="images/flow5.jpg" alt="Tech">
+                    <img src="images/flow6.jpg" alt="Mountain">
+                    <img src="images/flow3.jpg" alt="Hill">
+                </div>
+                <div class="flow-column col-4">
+                    <img src="images/flow7.jpg" alt="Nature">
+                    <img src="images/flow8.jpg" alt="Tech">
+                    <img src="images/flow1.jpg" alt="Nature">
+                    <img src="images/flow2.jpg" alt="Mountain">
+                    <img src="images/flow7.jpg" alt="Nature">
+                </div>
+            </div>
+
+            <!-- Collision overlays -->
+            <div class="collision-wrapper" id="c-wrapper">
+                <div class="collision-word word-left" id="c-left">DESIGN</div>
+                <div class="collision-word word-right" id="c-right">DEVELOP</div>
+            </div>
+
+            <!-- Marvel Centered Logo -->
+            <div class="marvel-logo-container">
+                <h1 class="marvel-logo" id="marvel-logo-text">ATHARVA</h1>
+            </div>
+            
+            <div class="marvel-flash" id="marvel-flash-light"></div>
+        </div>
+
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        let isAnimating = false;
+        let flowTweens = [];
+
+        // Reset all overlays and states
+        function resetSandbox() {
+            isAnimating = false;
+            
+            flowTweens.forEach(t => t.kill());
+            flowTweens = [];
+
+            // Hide all overlays
+            document.getElementById('overlay-1').classList.add('hidden');
+            document.getElementById('overlay-3').classList.add('hidden');
+            document.getElementById('overlay-4').classList.add('hidden');
+            document.getElementById('overlay-5').classList.add('hidden');
+            document.getElementById('counter-3').classList.add('hidden');
+
+            // Reset Hero elements visibility
+            gsap.set('.hero-mockup', { opacity: 1, scale: 1 });
+            gsap.set('.mockup-badge, .mockup-title, .mockup-desc, .mockup-actions', { opacity: 1, y: 0 });
+            
+            // Reset button active states
+            document.querySelectorAll('.btn-control').forEach(b => b.classList.remove('active'));
+        }
+
+        // Trigger chosen animation
+        function triggerAnimation(num) {
+            if (isAnimating) return;
+            resetSandbox();
+            
+            isAnimating = true;
+            
+            // Set active class on button
+            const buttons = document.querySelectorAll('.btn-control');
+            if (num === 5) buttons[0].classList.add('active');
+            else if (num === 1) buttons[1].classList.add('active');
+            else if (num === 3) buttons[2].classList.add('active');
+            else if (num === 4) buttons[3].classList.add('active');
+
+            if (num === 1) {
+                runZoomClipMask();
+            } else if (num === 3) {
+                runGridBlockStagger();
+            } else if (num === 4) {
+                runWordCollision();
+            } else if (num === 5) {
+                runCombinedIntro();
+            }
+        }
+
+        // ========================================
+        // ANIMATION 1: ZOOM CLIP-MASK REVEAL
+        // ========================================
+        function runZoomClipMask() {
+            const overlay = document.getElementById('overlay-1');
+            const numEl = document.getElementById('num-1');
+            const curtain = document.getElementById('curtain-1');
+            
+            overlay.classList.remove('hidden');
+            
+            gsap.set(curtain, { clipPath: 'circle(0% at 50% 50%)' });
+            gsap.set(numEl, { opacity: 1, scale: 1 });
+            gsap.set('.hero-mockup', { opacity: 0 });
+            
+            let count = { val: 0 };
+            
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    overlay.classList.add('hidden');
+                    isAnimating = false;
+                }
+            });
+
+            tl.to(count, {
+                val: 100,
+                duration: 2.0,
+                onUpdate: () => {
+                    numEl.innerText = Math.floor(count.val).toString().padStart(2, '0');
+                }
+            })
+            .to(numEl, {
+                scale: 0.5,
+                opacity: 0,
+                duration: 0.4,
+                ease: "power2.in"
+            })
+            .to(curtain, {
+                clipPath: 'circle(150% at 50% 50%)',
+                duration: 1.4,
+                ease: "power4.inOut"
+            }, "-=0.1")
+            .to('.hero-mockup', {
+                opacity: 1,
+                duration: 0.1
+            }, "-=1.0")
+            .fromTo('.mockup-badge, .mockup-title, .mockup-desc, .mockup-actions', 
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, stagger: 0.15, duration: 1.0, ease: "power3.out" },
+                "-=0.9"
+            );
+        }
+
+        // ========================================
+        // ANIMATION 3: GRID BLOCK STAGGER REVEAL
+        // ========================================
+        function runGridBlockStagger() {
+            const overlay = document.getElementById('overlay-3');
+            const counterOverlay = document.getElementById('counter-3');
+            const numEl = document.getElementById('num-3');
+            
+            overlay.innerHTML = '';
+            overlay.classList.remove('hidden');
+            counterOverlay.classList.remove('hidden');
+
+            for (let i = 0; i < 100; i++) {
+                const block = document.createElement('div');
+                block.className = 'grid-block';
+                overlay.appendChild(block);
+            }
+
+            gsap.set('.grid-block', { opacity: 1, scale: 1.02 });
+            gsap.set(numEl, { opacity: 1 });
+            gsap.set('.hero-mockup', { opacity: 0 });
+
+            let count = { val: 0 };
+            
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    overlay.classList.add('hidden');
+                    counterOverlay.classList.add('hidden');
+                    isAnimating = false;
+                }
+            });
+
+            tl.to(count, {
+                val: 100,
+                duration: 1.8,
+                onUpdate: () => {
+                    numEl.innerText = Math.floor(count.val).toString().padStart(2, '0');
+                }
+            })
+            .to(numEl, {
+                opacity: 0,
+                y: -30,
+                duration: 0.4,
+                ease: "power2.in"
+            })
+            .to('.grid-block', {
+                scale: 0,
+                opacity: 0,
+                duration: 0.9,
+                ease: "power2.inOut",
+                stagger: {
+                    grid: [10, 10],
+                    from: "center",
+                    amount: 0.65
+                }
+            }, "-=0.15")
+            .to('.hero-mockup', {
+                opacity: 1,
+                duration: 0.1
+            }, "-=0.7")
+            .fromTo('.mockup-badge, .mockup-title, .mockup-desc, .mockup-actions', 
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, stagger: 0.12, duration: 1.0, ease: "power3.out" },
+                "-=0.6"
+            );
+        }
+
+        // ========================================
+        // ANIMATION 4: WORD COLLISION REVEAL
+        // ========================================
+        function runWordCollision() {
+            const overlay = document.getElementById('overlay-4');
+            const numEl = document.getElementById('num-4');
+            const splitTop = document.getElementById('split-top');
+            const splitBottom = document.getElementById('split-bottom');
+            
+            overlay.classList.remove('hidden');
+
+            gsap.set('#w-left-t, #w-left-b', { xPercent: -150 });
+            gsap.set('#w-right-t, #w-right-b', { xPercent: 150 });
+            gsap.set(splitTop, { yPercent: 0 });
+            gsap.set(splitBottom, { yPercent: 0 });
+            gsap.set(numEl, { opacity: 1 });
+            gsap.set('.hero-mockup', { opacity: 0 });
+
+            let count = { val: 0 };
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    overlay.classList.add('hidden');
+                    isAnimating = false;
+                }
+            });
+
+            tl.to(count, {
+                val: 100,
+                duration: 1.6,
+                onUpdate: () => {
+                    numEl.innerText = Math.floor(count.val) + "%";
+                }
+            })
+            .to(numEl, {
+                opacity: 0,
+                duration: 0.3
+            })
+            .to('#w-left-t, #w-left-b', {
+                xPercent: -50,
+                duration: 0.8,
+                ease: "bounce.out"
+            })
+            .to('#w-right-t, #w-right-b', {
+                xPercent: 50,
+                duration: 0.8,
+                ease: "bounce.out"
+            }, "-=0.8")
+            .to({}, { duration: 0.3 })
+            .to(splitTop, {
+                yPercent: -100,
+                duration: 1.1,
+                ease: "power4.inOut"
+            })
+            .to(splitBottom, {
+                yPercent: 100,
+                duration: 1.1,
+                ease: "power4.inOut"
+            }, "-=1.1")
+            .to('.hero-mockup', {
+                opacity: 1,
+                duration: 0.1
+            }, "-=0.9")
+            .fromTo('.mockup-badge, .mockup-title, .mockup-desc, .mockup-actions', 
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, stagger: 0.12, duration: 1.0, ease: "power3.out" },
+                "-=0.8"
+            );
+        }
+
+        // ========================================
+        // ANIMATION 5: COMBINED INTRO (4 + 5)
+        // ========================================
+        function runCombinedIntro() {
+            const overlay = document.getElementById('overlay-5');
+            const logo = document.getElementById('marvel-logo-text');
+            const flash = document.getElementById('marvel-flash-light');
+            const flowWrapper = document.getElementById('flow-wrapper');
+            const cWrapper = document.getElementById('c-wrapper');
+            const cLeft = document.getElementById('c-left');
+            const cRight = document.getElementById('c-right');
+            
+            overlay.classList.remove('hidden');
+            flowWrapper.classList.remove('hidden');
+            cWrapper.classList.remove('hidden');
+
+            // Reset Initial States
+            logo.style.webkitTextFillColor = 'transparent';
+            logo.style.backgroundColor = 'transparent';
+            logo.style.borderColor = 'transparent';
+            logo.style.padding = '1.5rem 3rem';
+            
+            gsap.set(logo, { scale: 0.2, opacity: 0 });
+            gsap.set(flowWrapper, { scale: 1, rotation: 0, opacity: 1 });
+            gsap.set(flash, { opacity: 0 });
+            gsap.set('.hero-mockup', { opacity: 0 });
+            
+            // Set initial offscreen positions for collision text
+            gsap.set(cLeft, { xPercent: -150, opacity: 1 });
+            gsap.set(cRight, { xPercent: 150, opacity: 1 });
+
+            // 1. Start Squarespace Flowing Tapestry Vertical Scrolling Loop
+            const t1 = gsap.fromTo('.col-1, .col-3', 
+                { yPercent: 0 }, 
+                { yPercent: -20, duration: 7, ease: "none", repeat: -1 }
+            );
+            const t2 = gsap.fromTo('.col-2, .col-4', 
+                { yPercent: -20 }, 
+                { yPercent: 0, duration: 7, ease: "none", repeat: -1 }
+            );
+            flowTweens.push(t1, t2);
+
+            const images = [
+                'images/flow1.jpg', 'images/flow2.jpg', 'images/flow3.jpg', 'images/flow4.jpg',
+                'images/flow5.jpg', 'images/flow6.jpg', 'images/flow7.jpg', 'images/flow8.jpg',
+                'images/atharva.jpg', 'images/newsmind.png', 'images/lumina.png'
+            ];
+
+            let imgIndex = 0;
+            let flipInterval;
+
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    clearInterval(flipInterval);
+                    overlay.classList.add('hidden');
+                    isAnimating = false;
+                }
+            });
+
+            // Combined Timeline Sequence
+            tl.to({}, { duration: 1.0 }) // Let columns flow for 1.0s first
+              
+              // 2. COLLISION INBOUND: DESIGN & DEVELOP slide in on top of flowing grid
+              .to(cLeft, {
+                  xPercent: -48, // meet near center
+                  duration: 0.8,
+                  ease: "power2.inOut"
+              })
+              .to(cRight, {
+                  xPercent: 48,
+                  duration: 0.8,
+                  ease: "power2.inOut"
+              }, "-=0.8")
+              
+              // 3. COLLISION IMPACT: DESIGN/DEVELOP collide, columns collapse, and ATHARVA logo emerges
+              .to({}, { duration: 0.1 }) // Pause on impact
+              .to([cLeft, cRight], {
+                  opacity: 0,
+                  scale: 1.5,
+                  duration: 0.35,
+                  ease: "power2.out",
+                  onStart: () => {
+                      // Trigger viewport shake effect on impact
+                      gsap.fromTo('.viewport', 
+                          { x: -8, y: -4 }, 
+                          { x: 0, y: 0, duration: 0.3, ease: "elastic.out(2, 0.3)" }
+                      );
+
+                      // Explode/shrink the flowing columns
+                      gsap.to(flowWrapper, {
+                          scale: 0.15,
+                          rotation: 120,
+                          opacity: 0,
+                          duration: 1.0,
+                          ease: "power3.inOut"
+                      });
+
+                      // Reveal the central ATHARVA logo in the collision dust
+                      gsap.fromTo(logo, 
+                          { opacity: 0, scale: 0.1 },
+                          { opacity: 1, scale: 0.65, duration: 0.85, ease: "back.out(1.6)" }
+                      );
+
+                      // Start rapid Marvel photo flip inside logo masking
+                      flipInterval = setInterval(() => {
+                          logo.style.backgroundImage = `url('${images[imgIndex]}')`;
+                          imgIndex = (imgIndex + 1) % images.length;
+                      }, 50);
+                  }
+              })
+              .to([flowWrapper, cWrapper], {
+                  onStart: () => {
+                      flowWrapper.classList.add('hidden');
+                      cWrapper.classList.add('hidden');
+                  }
+              })
+              
+              // 4. LOGO ZOOM: Slow scale zoom-out of logo
+              .to(logo, {
+                  scale: 1.0,
+                  duration: 1.8,
+                  ease: "power1.out"
+              })
+              
+              // 5. CLIMAX: Transform into solid orange Marvel card + lens flare flash
+              .to(logo, {
+                  onStart: () => {
+                      clearInterval(flipInterval);
+                      logo.style.backgroundImage = 'none';
+                      logo.style.backgroundColor = 'var(--orange)';
+                      logo.style.webkitTextFillColor = 'var(--text-cream)';
+                      logo.style.borderColor = 'var(--text-cream)';
+                  },
+                  duration: 0.05
+              })
+              .to(flash, {
+                  opacity: 1,
+                  duration: 0.12,
+                  ease: "power2.out"
+              })
+              
+              // 6. SCREEN WIPE: Logo zooms in to wipe screen and dissolves into page
+              .to(logo, {
+                  scale: 12,
+                  opacity: 0,
+                  duration: 0.45,
+                  ease: "power3.in"
+              }, "-=0.05")
+              .to(flash, {
+                  opacity: 0,
+                  duration: 0.4,
+                  ease: "power2.inOut"
+              }, "-=0.1")
+              .to('.hero-mockup', {
+                  opacity: 1,
+                  duration: 0.1
+              }, "-=0.55")
+              .fromTo('.mockup-badge, .mockup-title, .mockup-desc, .mockup-actions', 
+                  { opacity: 0, y: 35 },
+                  { opacity: 1, y: 0, stagger: 0.12, duration: 1.0, ease: "power3.out" },
+                  "-=0.5"
+              );
+        }
+
+        // Trigger Combined Intro by default on sandbox load
+        window.onload = () => {
+            triggerAnimation(5);
+        };
+    </script>
+</body>
+</html>

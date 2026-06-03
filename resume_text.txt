@@ -1,0 +1,45 @@
+Atharva Agarwal
+Jaipur, India
+atharva22agarwal@gmail.com|+91 7073646599
+Portfolio|GitHub|LinkedIn
+Summary
+Aspiring Software Developer and AI Enthusiast pursuing BCA at BIT Mesra. Skilled in building scalable web
+applications, AI-powered tools, and real-time systems. Passionate about Generative AI, full-stack development,
+and building impactful products that solve real-world problems.
+Education
+Birla Institute of T echnology , Mesra (Jaipur Campus)2025 – 2028
+Bachelor of Computer Applications (BCA)
+St. Anselm’s North City School, Jaipur2025
+Senior Secondary (CBSE) – 80%
+Candlewick Public School, Jaipur2023
+Secondary (CBSE) – 80%
+Experience
+Blog W riting Intern Nov 2025
+InAmigos Foundation (Remote)
+•Authored SEO-optimized blogs on social impact topics, increasing engagement and visibility.
+•Collaborated with team members to align content with campaigns and outreach strategies.
+•Developed strong research, storytelling, and content optimization skills.
+Projects
+NewsMind.AI – AI-Powered News Intelligence Platform
+•Built a real-time AI platform for news analysis, comparison, and debate using hybrid LLM architecture.
+•Implemented forensic comparison system analyzing bias, omission, entropy, and content density across sources.
+•Developed real-time debate engine using Socket.io with live scoring based on logic, evidence, and sentiment.
+•Integrated multiple AI models (Llama, Gemini) for cost-efficient, high-performance inference.
+•Designed backend using Node.js, Express, and PostgreSQL with optimized data pipelines.
+Short Film Script – Social Anxiety
+•Wrote and conceptualized a short film script inspired by psychological themes and modern storytelling.
+•Focused on narrative structure, emotional depth, and audience engagement.
+Skills
+Programming:C, C++, Java, Python, JavaScript
+W eb Development:HTML, CSS, Bootstrap, Frontend Development
+T ools & T echnologies:VS Code, Apache Server, Git, MS Office
+AI & GenAI:ChatGPT, Gemini, Claude, AI Image Generation, Generative AI Development
+Core Skills:Problem Solving, Critical Thinking, Communication, Design Thinking
+Certifications
+•Web Development Training – Samyak, Jaipur
+•Python Programming Training – Samyak, Jaipur
+•JavaScript Training – Samyak, Jaipur
+•C Programming Training – Samyak, JaipurExtracurricular Activities
+•Organized school and college events, demonstrating leadership and teamwork.
+•Volunteered in college hackathon, gaining hands-on experience in event management.
+•Participated in drama and scripting activities.

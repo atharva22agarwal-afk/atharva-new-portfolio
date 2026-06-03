@@ -1,0 +1,4 @@
+images/*_error.html
+images/*.html
+.DS_Store
+Thumbs.db

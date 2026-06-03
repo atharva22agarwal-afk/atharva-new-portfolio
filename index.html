@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atharva Agarwal | Designer & Developer</title>
+    <meta name="description" content="Portfolio of Atharva Agarwal — Designer, Developer, and Creative Technologist based in Jaipur, India.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- DYNAMIC ENTRY PRELOADER (Horizontal Tapestry Arc + Word Collision + Marvel Reveal) -->
+    <div id="preloader" class="marvel-overlay">
+        <!-- Flowing Tapestry of Curved Rows -->
+        <div class="flow-rows-wrapper" id="flow-wrapper">
+            <div class="flow-row row-1" id="flow-row-1"></div>
+            <div class="flow-row row-2" id="flow-row-2"></div>
+            <div class="flow-row row-3" id="flow-row-3"></div>
+            <div class="flow-row row-4" id="flow-row-4"></div>
+            <div class="flow-row row-5" id="flow-row-5"></div>
+            <div class="flow-row row-6" id="flow-row-6"></div>
+        </div>
+
+        <!-- Collision overlays -->
+        <div class="collision-wrapper" id="c-wrapper">
+            <div class="collision-word word-left" id="c-left">DESIGN</div>
+            <div class="collision-word word-right" id="c-right">DEVELOP</div>
+        </div>
+
+        <!-- Marvel Centered Logo -->
+        <div class="marvel-logo-container">
+            <h1 class="marvel-logo" id="marvel-logo-text">ATHARVA</h1>
+        </div>
+        
+        <div class="shockwave" id="marvel-shockwave"></div>
+        <div class="marvel-flash" id="marvel-flash-light"></div>
+    </div>
+
+    <!-- CUSTOM MOUSE CURSORS -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-circle"></div>
+
+    <!-- HEADER NAVIGATION WITH PROGRESS BAR -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#" class="nav-brand-name">ATHARVA AGARWAL</a>
+                <span class="nav-brand-title">DESIGNER & DEVELOPER / BIT MESRA</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#about" class="nav-menu-link">about</a></li>
+                    <li><a href="#cases" class="nav-menu-link">works</a></li>
+                    <li><a href="#awards" class="nav-menu-link">certs</a></li>
+                    <li><a href="#footer" class="nav-menu-link">contact</a></li>
+                </ul>
+                <a href="resume.pdf" class="nav-resume-btn" target="_blank">Resume</a>
+            </nav>
+            <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </header>
+
+    <!-- MOBILE NAVIGATION MENU -->
+    <div id="mobile-menu" class="mobile-menu">
+        <ul>
+            <li><a href="#about" class="mobile-menu-link">about</a></li>
+            <li><a href="#cases" class="mobile-menu-link">works</a></li>
+            <li><a href="#awards" class="mobile-menu-link">certs</a></li>
+            <li><a href="#footer" class="mobile-menu-link">contact</a></li>
+            <li><a href="resume.pdf" class="mobile-menu-link" target="_blank">resume</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- ============ HERO SECTION ============ -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- Left Side: Massive Typography -->
+                    <div class="hero-left">
+                        <h1 class="hero-title" id="hero-heading">
+                            <span class="split-line"><span class="outline">ATHARVA</span></span>
+                            <span class="split-line"><span>AGARWAL</span></span>
+                        </h1>
+                        <div class="hero-subtitle uppercase">
+                            Creative Developer & Designer
+                        </div>
+                        <div class="hero-meta uppercase">
+                            BIT Mesra / Jaipur, India
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: Styled Brutalist Card -->
+                    <div class="hero-right">
+                        <div class="hero-card">
+                            <!-- Rotating availability badge -->
+                            <div class="hero-badge-container">
+                                <svg viewBox="0 0 100 100" class="hero-badge-star">
+                                    <polygon points="50,2 65,35 98,35 71,57 81,91 50,70 19,91 29,57 2,35 35,35" fill="currentColor"/>
+                                </svg>
+                                <span class="hero-badge-text uppercase"><strong id="current-month">JUN</strong> available for work</span>
+                            </div>
+                            
+                            <p class="hero-description">
+                                I am a developer and creative technologist based in India. Pursuing a <strong>BCA at BIT Mesra (Jaipur)</strong>, I combine full-stack engineering with scriptwriting and SEO storytelling. I love minimalist designs, psychological dramas, and cost-efficient AI.
+                            </p>
+                            
+                            <a href="#footer" class="btn-marquee full-width">
+                                <span>Get in Touch</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>Get in Touch</span>
+                                        <span>Get in Touch</span>
+                                        <span>Get in Touch</span>
+                                        <span>Get in Touch</span>
+                                        <span>Get in Touch</span>
+                                        <span>Get in Touch</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ABOUT SECTION ============ -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-left reveal-up">
+                        <div class="about-image-container">
+                            <img src="images/atharva.jpg" alt="Atharva Agarwal">
+                        </div>
+                    </div>
+                    <div class="about-right reveal-up" style="--delay: 0.2s">
+                        <span class="section-title-label">01 / Profile</span>
+                        <h2 class="section-title uppercase">the duality of<br>code & narrative</h2>
+                        <div class="about-text">
+                            <p>
+                                I sit at the intersection of technology and creativity — I don't just write code, I craft experiences. Whether designing backend pipelines or scriptwriting psychological dramas, I bring a unique dual perspective to my projects.
+                            </p>
+                            <p>
+                                With experience building AI-powered tools like <strong>NewsMind.AI</strong> and writing SEO-optimized blogs during my remote internship at <strong>InAmigos Foundation</strong>, I focus on creating high-impact digital experiences.
+                            </p>
+                        </div>
+                        <div class="about-skills-row">
+                            <span class="about-skills-header uppercase">Technical capabilities:</span>
+                            <div class="skill-pills">
+                                <span class="skill-pill">Python</span>
+                                <span class="skill-pill">JavaScript</span>
+                                <span class="skill-pill">Java</span>
+                                <span class="skill-pill">C / C++</span>
+                                <span class="skill-pill">Node.js</span>
+                                <span class="skill-pill">Express</span>
+                                <span class="skill-pill">PostgreSQL</span>
+                                <span class="skill-pill">HTML / CSS</span>
+                                <span class="skill-pill">Bootstrap</span>
+                                <span class="skill-pill">Git / VS Code</span>
+                                <span class="skill-pill">Prompt Engineering</span>
+                                <span class="skill-pill">Gemini / Claude / ChatGPT</span>
+                            </div>
+                        </div>
+                        <div class="about-skills-row" style="margin-top: 1rem;">
+                            <span class="about-skills-header uppercase">Creative capabilities:</span>
+                            <div class="skill-pills">
+                                <span class="skill-pill">Scriptwriting</span>
+                                <span class="skill-pill">Dialogue Design</span>
+                                <span class="skill-pill">SEO Copywriting</span>
+                                <span class="skill-pill">Event Management</span>
+                                <span class="skill-pill">Drama & Scripting</span>
+                                <span class="skill-pill">Public Speaking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ WORKS SECTION ============ -->
+        <section id="cases" class="section">
+            <div class="container">
+                <span class="section-title-label">02 / works</span>
+                <h2 class="section-title uppercase">selected cases</h2>
+                
+                <div class="cases-grid">
+                    
+                    <!-- Case 1: NewsMind.AI -->
+                    <div class="case-row reveal-up">
+                        <div class="case-left">
+                            <span class="case-index">01</span>
+                            <h3 class="case-title uppercase">NewsMind.AI</h3>
+                            <p class="case-desc">
+                                A real-time AI news comparison and debate scoring platform using a hybrid LLM layout. Analyzes bias, content density, and semantic entropy across news channels.
+                            </p>
+                            <div class="case-tech">
+                                <span class="case-tech-tag">Node.js</span>
+                                <span class="case-tech-tag">PostgreSQL</span>
+                                <span class="case-tech-tag">Gemini API</span>
+                                <span class="case-tech-tag">Socket.io</span>
+                            </div>
+                            <div class="case-actions">
+                                <button class="btn-marquee" data-case="newsmind">
+                                    <span>See Details</span>
+                                    <div class="marquee-wrapper">
+                                        <div class="marquee-inner">
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                        </div>
+                                    </div>
+                                </button>
+                                <a href="https://github.com/atharva22agarwal-afk/newsmind-ai" target="_blank" class="btn-marquee">
+                                    <span>Repository</span>
+                                    <div class="marquee-wrapper">
+                                        <div class="marquee-inner">
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://newsmind-ai.vercel.app/" target="_blank" class="btn-marquee">
+                                    <span>Live Demo</span>
+                                    <div class="marquee-wrapper">
+                                        <div class="marquee-inner">
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="case-right">
+                            <div class="case-image-wrapper">
+                                <img src="images/newsmind.png" alt="NewsMind.AI Mockup">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2: Lumina -->
+                    <div class="case-row reveal-up">
+                        <div class="case-left">
+                            <span class="case-index">02</span>
+                            <h3 class="case-title uppercase">Lumina</h3>
+                            <p class="case-desc">
+                                A premium developer portfolio utilizing interactive 2D canvas constellation rendering, an integrated custom CLI terminal command parser, and Eclipse/Solar dual theme modes.
+                            </p>
+                            <div class="case-tech">
+                                <span class="case-tech-tag">HTML5 / CSS3</span>
+                                <span class="case-tech-tag">JavaScript</span>
+                                <span class="case-tech-tag">Canvas API</span>
+                                <span class="case-tech-tag">CLI Emulator</span>
+                            </div>
+                            <div class="case-actions">
+                                <button class="btn-marquee" data-case="lumina">
+                                    <span>See Details</span>
+                                    <div class="marquee-wrapper">
+                                        <div class="marquee-inner">
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                            <span>See Details</span>
+                                        </div>
+                                    </div>
+                                </button>
+                                <a href="https://github.com/atharva22agarwal-afk/lumina" target="_blank" class="btn-marquee">
+                                    <span>Repository</span>
+                                    <div class="marquee-wrapper">
+                                        <div class="marquee-inner">
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                            <span>Repository</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="https://lumina-portfolio.vercel.app/" target="_blank" class="btn-marquee">
+                                    <span>Live Demo</span>
+                                    <div class="marquee-wrapper">
+                                        <div class="marquee-inner">
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                            <span>Live Demo</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="case-right">
+                            <div class="case-image-wrapper">
+                                <img src="images/lumina.png" alt="Lumina Mockup">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ AWARDS / CERTIFICATIONS SECTION ============ -->
+        <section id="awards" class="section">
+            <div class="container">
+                <span class="section-title-label">03 / qualifications</span>
+                <h2 class="section-title uppercase">certifications</h2>
+                
+                <div class="awards-table reveal-up">
+                    <div class="table-header">
+                        <span>CERTIFICATE</span>
+                        <span>PLATFORM</span>
+                        <span>PROJECT</span>
+                    </div>
+
+                    <!-- Row 1 -->
+                    <div class="table-row">
+                        <span class="row-col">Web Development Training</span>
+                        <span class="row-col platform">Samyak, Jaipur</span>
+                        <span class="row-col project">
+                            Full-Stack Training
+                            <span class="row-arrow">
+                                <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.875 13.357V3.643L1.518 17 0 15.482 13.357 2.125H3.643V0H17v13.357z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                        </span>
+                        <!-- Hover Marquee -->
+                        <div class="table-row-marquee">
+                            <div class="row-marquee-inner">
+                                <span>Web Development Certificate • Samyak, Jaipur • Web Development Certificate • Samyak, Jaipur • </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="table-row">
+                        <span class="row-col">Python Programming</span>
+                        <span class="row-col platform">Samyak, Jaipur</span>
+                        <span class="row-col project">
+                            Algorithms & Scripting
+                            <span class="row-arrow">
+                                <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.875 13.357V3.643L1.518 17 0 15.482 13.357 2.125H3.643V0H17v13.357z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                        </span>
+                        <!-- Hover Marquee -->
+                        <div class="table-row-marquee">
+                            <div class="row-marquee-inner">
+                                <span>Python Programming Certificate • Samyak, Jaipur • Python Programming Certificate • Samyak, Jaipur • </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="table-row">
+                        <span class="row-col">JavaScript Training</span>
+                        <span class="row-col platform">Samyak, Jaipur</span>
+                        <span class="row-col project">
+                            DOM & Interactions
+                            <span class="row-arrow">
+                                <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.875 13.357V3.643L1.518 17 0 15.482 13.357 2.125H3.643V0H17v13.357z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                        </span>
+                        <!-- Hover Marquee -->
+                        <div class="table-row-marquee">
+                            <div class="row-marquee-inner">
+                                <span>JavaScript Certificate • Samyak, Jaipur • JavaScript Certificate • Samyak, Jaipur • </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="table-row">
+                        <span class="row-col">C Programming</span>
+                        <span class="row-col platform">Samyak, Jaipur</span>
+                        <span class="row-col project">
+                            Logic & Syntax
+                            <span class="row-arrow">
+                                <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.875 13.357V3.643L1.518 17 0 15.482 13.357 2.125H3.643V0H17v13.357z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                        </span>
+                        <!-- Hover Marquee -->
+                        <div class="table-row-marquee">
+                            <div class="row-marquee-inner">
+                                <span>C Programming Certificate • Samyak, Jaipur • C Programming Certificate • Samyak, Jaipur • </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ LET'S CONNECT / FOOTER SECTION ============ -->
+        <section id="footer" class="footer-section">
+            <div class="container">
+                <div class="footer-top reveal-up">
+                    <div class="footer-left">
+                        <h3 class="footer-title uppercase">LET'S<br>CONNECT</h3>
+                    </div>
+                    <div class="footer-right">
+                        <span class="footer-label uppercase">I'm always interested in:</span>
+                        <div class="footer-capsules">
+                            
+                            <!-- Capsule 1 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=👨‍💻%20I%20am%20looking%20for%20a%20Full-Stack%20Developer.%20Let's%20talk" class="footer-capsule">
+                                <span>Full-Stack Development</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>Full-Stack Development • Full-Stack Development • Full-Stack Development • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Capsule 2 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=🤖%20I%20am%20looking%20for%20an%20AI/LLM%20Integrator.%20Let's%20talk" class="footer-capsule">
+                                <span>AI & LLM Integration</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>AI & LLM Integration • AI & LLM Integration • AI & LLM Integration • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Capsule 3 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=✍️%20I%20am%20looking%20for%20an%20SEO%20Content%20Writer.%20Let's%20talk" class="footer-capsule">
+                                <span>SEO Content Writing</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>SEO Content Writing • SEO Content Writing • SEO Content Writing • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Capsule 4 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=🎬%20I%20am%20looking%20for%20a%20Creative%20Writer/Scriptwriter.%20Let's%20talk" class="footer-capsule">
+                                <span>Scriptwriting & Story</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>Scriptwriting & Story • Scriptwriting & Story • Scriptwriting & Story • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Capsule 5 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=🎨%20I%20am%20looking%20for%20a%20UI/UX%20Designer%20or%20Creative%20Developer.%20Let's%20talk" class="footer-capsule">
+                                <span>UI/UX & Creative Design</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>UI/UX & Creative Design • UI/UX & Creative Design • UI/UX & Creative Design • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Capsule 6 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=⚙️%20I%20am%20looking%20for%20a%20Backend/Database%20Developer.%20Let's%20talk" class="footer-capsule">
+                                <span>Backend & Databases</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>Backend & Databases • Backend & Databases • Backend & Databases • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Capsule 7 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=🐍%20I%20am%20looking%20for%20a%20Python%20Developer.%20Let's%20talk" class="footer-capsule">
+                                <span>Python & Automation</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>Python & Automation • Python & Automation • Python & Automation • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Capsule 8 -->
+                            <a href="mailto:atharva22agarwal@gmail.com?subject=✍️%20I%20am%20looking%20for%20a%20GenAI%20Prompt%20Engineer.%20Let's%20talk" class="footer-capsule">
+                                <span>GenAI & Prompts</span>
+                                <div class="marquee-wrapper">
+                                    <div class="marquee-inner">
+                                        <span>GenAI & Prompts • GenAI & Prompts • GenAI & Prompts • </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <span class="footer-copy">&copy; 2026 — Designed in Patrick David style, built by <strong>Atharva Agarwal</strong></span>
+                    <div class="footer-socials">
+                        <a href="https://github.com/atharva22agarwal-afk" target="_blank" class="footer-social-link">Github</a>
+                        <a href="https://www.linkedin.com/in/atharva-agrawal-18365a380/" target="_blank" class="footer-social-link">LinkedIn</a>
+                        <a href="mailto:atharva22agarwal@gmail.com" class="footer-social-link">Email</a>
+                        <a href="tel:+917073646599" class="footer-social-link">Phone</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CASE STUDY DETAIL MODAL OVERLAY -->
+    <div class="case-modal-overlay" id="case-modal-overlay"></div>
+    <div class="case-modal" id="case-modal">
+        <button class="case-modal-close" id="case-modal-close-btn">
+            <i class="fa-solid fa-arrow-left"></i> close
+        </button>
+        <div id="modal-case-body">
+            <!-- Dynamic Content Injected via JS -->
+        </div>
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

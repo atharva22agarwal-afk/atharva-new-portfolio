@@ -20,8 +20,30 @@
     --border-light: rgba(248, 238, 228, 0.12);
     --border-strong: rgba(248, 238, 228, 0.3);
     
+    --grid-color: rgba(248, 238, 228, 0.012);
+    --bg-header: rgba(7, 7, 7, 0.9);
+    
     --ease-brutal: cubic-bezier(0.85, 0, 0.15, 1);
     --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+[data-theme="light"] {
+    --bg-dark: #f5f2ee;
+    --bg-card: #ffffff;
+    --text-cream: #1a1a1a;
+    --text-white: #070707;
+    --text-muted: #6b6b6b;
+    --border-light: rgba(7, 7, 7, 0.12);
+    --border-strong: rgba(7, 7, 7, 0.25);
+    --grid-color: rgba(7, 7, 7, 0.02);
+    --bg-header: rgba(245, 242, 238, 0.9);
+    --orange-dim: rgba(255, 79, 0, 0.08);
+    --orange-glow: rgba(255, 79, 0, 0.2);
+}
+
+/* Smooth Theme Switching Transitions */
+body, header, footer, section, .hero-card, .duality-card, .case-row, .awards-table, .testimonial-card, .nav-menu-link, .nav-resume-btn, .btn-marquee, .table-row, .footer-capsule, .skill-pill, .case-modal {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ========================================
@@ -50,6 +72,10 @@ html::-webkit-scrollbar-thumb { background: var(--orange); }
 
 body {
     background-color: var(--bg-dark);
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px), 
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
     color: var(--text-cream);
     overflow-x: hidden;
     line-height: 1.5;
@@ -269,6 +295,7 @@ body.hovering #cursor-dot {
     display: none !important;
 }
 
+
 /* ========================================
    HEADER NAVIGATION WITH PROGRESS BAR
    ======================================== */
@@ -276,7 +303,7 @@ body.hovering #cursor-dot {
     position: fixed;
     top: 0; left: 0;
     width: 100%;
-    background: rgba(7, 7, 7, 0.9);
+    background: var(--bg-header);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-light);
@@ -365,6 +392,27 @@ body.hovering #cursor-dot {
     border-color: var(--orange);
     background: var(--orange-dim);
     color: var(--orange);
+}
+
+.theme-toggle-btn {
+    color: var(--text-cream);
+    font-size: 0.95rem;
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    transition: all 0.3s var(--ease-out-expo);
+    border-radius: 4px;
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    background: var(--orange-dim);
 }
 
 /* Header Scroll Progress Bar */
@@ -458,7 +506,7 @@ body.hovering #cursor-dot {
 .hero-badge-container {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
     margin-bottom: 2rem;
 }
 
@@ -473,11 +521,60 @@ body.hovering #cursor-dot {
     to { transform: rotate(360deg); }
 }
 
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #27c93f;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(39, 201, 63, 0.4);
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #27c93f;
+    border-radius: 50%;
+    opacity: 0;
+    animation: badge-pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes badge-pulse {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
 .hero-badge-text {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.8rem;
     letter-spacing: 2px;
     color: var(--text-muted);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.hero-buttons .btn-marquee {
+    flex: 1;
+    max-width: none;
+    padding: 1.2rem 1rem;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
 }
 
 .hero-title {
@@ -690,16 +787,25 @@ body.hovering #cursor-dot {
     padding: 1.5rem;
 }
 
-.about-image-container {
+.about-visuals-wrapper {
+    position: relative;
     width: 100%;
     aspect-ratio: 3/4;
     overflow: hidden;
-    filter: grayscale(100%);
+}
+
+.about-image-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    filter: grayscale(100%) brightness(0.25);
     transition: filter 0.6s var(--ease-out-expo);
+    z-index: 1;
 }
 
 .about-left:hover .about-image-container {
-    filter: grayscale(0%);
+    filter: grayscale(100%) brightness(0.3);
 }
 
 .about-image-container img {
@@ -710,7 +816,221 @@ body.hovering #cursor-dot {
 }
 
 .about-left:hover .about-image-container img {
-    transform: scale(1.03);
+    transform: scale(1.02);
+}
+
+/* Duality Visual Mockups */
+.duality-card {
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    width: calc(100% - 3rem);
+    height: calc(100% - 3rem);
+    border-radius: 6px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    pointer-events: none;
+    transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    overflow: hidden;
+}
+
+.duality-card.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Code IDE Card */
+.code-card {
+    background: #0d0d0d;
+    border: 1px solid rgba(248, 238, 228, 0.15);
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-cream);
+}
+
+.code-card .card-header {
+    background: #141414;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(248, 238, 228, 0.08);
+}
+
+.code-card .circles {
+    display: flex;
+    gap: 6px;
+}
+
+.code-card .circle {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.code-card .circle.red { background: #ff5f56; }
+.code-card .circle.yellow { background: #ffbd2e; }
+.code-card .circle.green { background: #27c93f; }
+
+.code-card .card-title {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.code-card .card-body {
+    padding: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background: #090909;
+}
+
+.code-card pre {
+    margin: 0;
+    width: 100%;
+}
+
+.code-card code {
+    display: block;
+    font-family: inherit;
+    text-align: left;
+}
+
+.code-card .keyword { color: var(--orange); }
+.code-card .string { color: #87e070; }
+
+/* Screenplay Paper Card */
+.narrative-card {
+    background: #fdfbf7;
+    border: 1px solid rgba(7, 7, 7, 0.15);
+    color: #111111;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+}
+
+.narrative-card .paper-texture {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.01) 1px, transparent 1px);
+    background-size: 16px 16px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.narrative-card .screenplay-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #222222;
+    font-weight: 500;
+    height: 100%;
+    justify-content: center;
+}
+
+.narrative-card .scene-heading {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.narrative-card .action {
+    margin-bottom: 0.4rem;
+    text-align: left;
+}
+
+.narrative-card .character {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    font-weight: 700;
+}
+
+.narrative-card .parenthetical {
+    text-align: center;
+    font-style: italic;
+}
+
+.narrative-card .dialogue {
+    text-align: center;
+    padding: 0 10%;
+    margin-bottom: 0.4rem;
+}
+
+/* Duality Switch & Panes */
+.duality-switch {
+    position: relative;
+    display: inline-flex;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    padding: 4px;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    z-index: 5;
+    align-self: flex-start;
+}
+
+.duality-btn {
+    position: relative;
+    padding: 0.6rem 1.8rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    z-index: 2;
+    transition: color 0.4s var(--ease-out-expo);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.duality-btn.active {
+    color: var(--text-white);
+}
+
+.switch-bg {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: calc(100% - 8px);
+    width: calc(50% - 4px);
+    background: var(--orange);
+    border-radius: 2px;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.duality-switch.narrative-active .switch-bg {
+    transform: translateX(100%);
+}
+
+.about-pane {
+    display: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+
+.about-pane.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .about-right {
@@ -1405,4 +1725,45 @@ body.hovering #cursor-dot {
     color: var(--orange);
     border-color: var(--orange);
     background: var(--orange-dim);
+}
+
+
+/* Navigation Scrollspy Active Highlight Styles */
+.nav-menu-link.active-scroll {
+    color: var(--orange) !important;
+}
+
+.nav-menu-link.active-scroll::after {
+    width: 100% !important;
+}
+
+/* ========================================
+   ACCESSIBILITY & REDUCED MOTION OVERRIDES
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: scroll !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+    #preloader {
+        display: none !important;
+    }
+    #cursor-dot, #cursor-circle {
+        display: none !important;
+    }
+    body {
+        cursor: auto !important;
+    }
+    .reveal-up {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .split-line span {
+        transform: none !important;
+    }
 }

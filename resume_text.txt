@@ -1,45 +1,61 @@
 Atharva Agarwal
-Jaipur, India
-atharva22agarwal@gmail.com|+91 7073646599
-Portfolio|GitHub|LinkedIn
-Summary
-Aspiring Software Developer and AI Enthusiast pursuing BCA at BIT Mesra. Skilled in building scalable web
-applications, AI-powered tools, and real-time systems. Passionate about Generative AI, full-stack development,
-and building impactful products that solve real-world problems.
+Jaipur, Rajasthan, India 302039
+atharva22agarwal@gmail.com | +91 7073646599
+GitHub: github.com/atharva22agarwal-afk
+LinkedIn: linkedin.com/in/atharva-agrawal-18365a380
+Portfolio: my-portfolio-chi-nine-47.vercel.app
+
+Professional Summary
+First-year BCA student at BIT Mesra with hands-on experience building AI-powered full-stack applications and scalable web solutions. Skilled in Python, JavaScript, React.js, Node.js, PostgreSQL, and Generative AI tools. Built NewsMind.AI — a real-time news intelligence platform using hybrid LLM architecture. Passionate about software engineering, AI development, and solving real-world problems through impactful technology.
+
+Technical Skills
+Languages: Python, JavaScript, Java, C++, C
+Frontend: React.js, Tailwind CSS, HTML5, CSS3, Bootstrap
+Backend: Node.js, Express.js, PostgreSQL, REST APIs
+AI & GenAI: LLM Integration, Prompt Engineering, Gemini API, Claude API
+Tools: Git, GitHub, VS Code, Postman, Vercel, Socket.io
+Learning: Docker, TypeScript
+
 Education
-Birla Institute of T echnology , Mesra (Jaipur Campus)2025 – 2028
+Birla Institute of Technology, Mesra (Jaipur Campus) - Expected 2028
 Bachelor of Computer Applications (BCA)
-St. Anselm’s North City School, Jaipur2025
-Senior Secondary (CBSE) – 80%
-Candlewick Public School, Jaipur2023
-Secondary (CBSE) – 80%
+Key Modules: Data Structures, DBMS, Web Development, OOP
+
+St. Anselm's North City School, Jaipur - 2025
+Senior Secondary (CBSE) – Score: 80%
+
+Candlewick Public School, Jaipur - 2023
+Secondary (CBSE) – Score: 80%
+
 Experience
-Blog W riting Intern Nov 2025
-InAmigos Foundation (Remote)
-•Authored SEO-optimized blogs on social impact topics, increasing engagement and visibility.
-•Collaborated with team members to align content with campaigns and outreach strategies.
-•Developed strong research, storytelling, and content optimization skills.
+InAmigos Foundation (Remote) - Nov 2025 – Dec 2025
+Blog Writing Intern
+• Authored SEO-optimised blogs on social impact topics, improving engagement and online visibility.
+• Collaborated with the content team to align articles with outreach campaigns and audience goals.
+• Applied research and content optimisation techniques to improve readability and search performance.
+
 Projects
 NewsMind.AI – AI-Powered News Intelligence Platform
-•Built a real-time AI platform for news analysis, comparison, and debate using hybrid LLM architecture.
-•Implemented forensic comparison system analyzing bias, omission, entropy, and content density across sources.
-•Developed real-time debate engine using Socket.io with live scoring based on logic, evidence, and sentiment.
-•Integrated multiple AI models (Llama, Gemini) for cost-efficient, high-performance inference.
-•Designed backend using Node.js, Express, and PostgreSQL with optimized data pipelines.
-Short Film Script – Social Anxiety
-•Wrote and conceptualized a short film script inspired by psychological themes and modern storytelling.
-•Focused on narrative structure, emotional depth, and audience engagement.
-Skills
-Programming:C, C++, Java, Python, JavaScript
-W eb Development:HTML, CSS, Bootstrap, Frontend Development
-T ools & T echnologies:VS Code, Apache Server, Git, MS Office
-AI & GenAI:ChatGPT, Gemini, Claude, AI Image Generation, Generative AI Development
-Core Skills:Problem Solving, Critical Thinking, Communication, Design Thinking
+• Built a real-time AI news analysis platform using hybrid LLM architecture with Llama and Gemini models.
+• Implemented forensic bias detection by analysing omission, entropy, and content density across sources.
+• Developed a live debate engine using Socket.io with real-time scoring based on logic and evidence.
+• Designed scalable backend APIs using Node.js, Express.js, and PostgreSQL.
+
+Lumina – AI-Powered Personal Wellness Dashboard
+• Developed a comprehensive wellness platform combining affirmations, AI-guided meditation, journaling, focus timers, mood tracking, and vision boards.
+• Integrated Groq AI API for personalized meditation script generation and intelligent guidance with offline fallback support.
+• Built reusable React components with Framer Motion animations for smooth page transitions and interactive UI elements.
+• Implemented browser localStorage for persistent user data management across affirmations, mood history, journal entries, and vision boards.
+• Designed calming, spiritual UI with Playfair Display typography and glassmorphism effects for a premium wellness experience.
+
 Certifications
-•Web Development Training – Samyak, Jaipur
-•Python Programming Training – Samyak, Jaipur
-•JavaScript Training – Samyak, Jaipur
-•C Programming Training – Samyak, JaipurExtracurricular Activities
-•Organized school and college events, demonstrating leadership and teamwork.
-•Volunteered in college hackathon, gaining hands-on experience in event management.
-•Participated in drama and scripting activities.
+• Web Development Training – Samyak, Jaipur
+• Python Programming Training – Samyak, Jaipur
+• JavaScript Training – Samyak, Jaipur
+• C Programming Training – Samyak, Jaipur
+• Microsoft GitHub Foundations (In Progress)
+
+Community Service & Volunteer Work
+• Volunteered as an event coordinator at college hackathons and tech events.
+• Participated in drama, scripting, and storytelling activities.
+• Demonstrated leadership and teamwork through organising college events.

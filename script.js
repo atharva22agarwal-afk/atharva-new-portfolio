@@ -46,82 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cWrapper = document.getElementById('c-wrapper');
     const cLeft = document.getElementById('c-left');
     const cRight = document.getElementById('c-right');
-    const preloaderAudio = document.getElementById('preloader-audio');
     
     // Check prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    // Audio Player setup
-    const globalMuteToggleBtn = document.getElementById('global-mute-toggle');
-    const globalMuteIcon = document.getElementById('global-mute-icon');
-    
-    let audioStarted = false;
-    let isMuted = false; // Always start unmuted per user request
-    if (preloaderAudio) {
-        preloaderAudio.muted = isMuted;
-        preloaderAudio.volume = 0.35; // Comfortable volume
-        updateMuteIcon();
-    }
-
-    function updateMuteIcon() {
-        if (!preloaderAudio) return;
-        const iconClass = preloaderAudio.muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
-        const ariaText = preloaderAudio.muted ? 'Unmute music' : 'Mute music';
-        
-        if (globalMuteIcon && globalMuteToggleBtn) {
-            globalMuteIcon.className = iconClass;
-            globalMuteToggleBtn.setAttribute('aria-label', ariaText);
-        }
-    }
-
-    const startAudio = () => {
-        if (audioStarted || !preloaderAudio) return;
-        preloaderAudio.play().then(() => {
-            audioStarted = true;
-            cleanupAudioListeners();
-        }).catch(err => {
-            console.warn("Audio autoplay blocked or failed:", err);
-        });
-    };
-
-    const cleanupAudioListeners = () => {
-        document.removeEventListener('click', startAudio);
-        document.removeEventListener('touchstart', startAudio);
-        document.removeEventListener('keydown', startAudio);
-        document.removeEventListener('mousedown', startAudio);
-    };
-
-    // Try playing immediately, if browser allows
-    if (preloaderAudio) {
-        preloaderAudio.play().then(() => {
-            audioStarted = true;
-        }).catch(() => {
-            // Autoplay blocked, listen for first user interaction
-            document.addEventListener('click', startAudio);
-            document.addEventListener('touchstart', startAudio);
-            document.addEventListener('keydown', startAudio);
-            document.addEventListener('mousedown', startAudio);
-        });
-    }
-
-    const handleMuteToggle = (e) => {
-        if (e) e.stopPropagation();
-        if (!preloaderAudio) return;
-        
-        preloaderAudio.play().then(() => {
-            audioStarted = true;
-            cleanupAudioListeners();
-            preloaderAudio.muted = !preloaderAudio.muted;
-            localStorage.setItem('preloader-audio-muted', preloaderAudio.muted);
-            updateMuteIcon();
-        }).catch(err => {
-            console.error("Failed to play audio:", err);
-        });
-    };
-
-    if (globalMuteToggleBtn) {
-        globalMuteToggleBtn.addEventListener('click', handleMuteToggle);
-    }
 
     // Hide scrollbar during preload
     if (!prefersReducedMotion) {
